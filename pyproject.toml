@@ -3,7 +3,7 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [project]
-name = "study-timer"
+name = "studytimer"
 version = "0.1"
 authors = [
   { name="nazy00", email="naziya@cybar.dev" },
