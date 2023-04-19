@@ -1,4 +1,5 @@
 from .timer import Timer
+from tkinter import Label
 
 
 class Pomodoro:
@@ -40,7 +41,11 @@ class Pomodoro:
             self.work_timer = Timer(minutes=30)
 
     def reset(self):
-        self.__STOP = True
-        self.work_timer.stop()
-        self.short_break_timer.stop()
-        self.long_break_timer.stop()
+        if not self.__STOP:
+            self.__STOP = True
+            if self.state == self.__STATES[0]:
+                self.work_timer.stop()
+            elif self.state == self.__STATES[1]:
+                self.short_break_timer.stop()
+            elif self.state == self.__STATES[2]:
+                self.long_break_timer.stop()
