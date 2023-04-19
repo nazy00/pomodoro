@@ -5,6 +5,7 @@ class Pomodoro:
     def __init__(self) -> None:
         self.__STATES = ("work", "short break", "long break")
         self.state = self.__STATES[0]
+        self.work_timer = Timer(minutes=30)
         self.__STOP = False
 
     def __str__(self) -> str:
@@ -23,8 +24,6 @@ class Pomodoro:
     def start(self):
         count = 1
         while not self.__STOP:
-            self.state = self.__STATES[0]
-            self.work_timer = Timer(minutes=30)
             self.work_timer.start()
 
             if count % 4:
@@ -37,6 +36,8 @@ class Pomodoro:
                 self.long_break_timer.start()
 
             count += 1
+            self.state = self.__STATES[0]
+            self.work_timer = Timer(minutes=30)
 
     def reset(self):
         self.__STOP = True
